@@ -1,89 +1,44 @@
-
-import { JSX } from 'react';
-
 import "./globals.css";
-import Link from 'next/link';
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconName } from "@fortawesome/free-brands-svg-icons";
-import { faLink, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleCheck} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import { Projects, Projectsi } from './Projects';
 
 
-interface Project {
-    index: number;
-    title: string;
-    description: string[];
-    logos: IconName[];
-    url: string;
-    github: string;
-    classes: string;
-}
-
-interface Projects {
-    projects: Project[];
-    map(element: (post: Project) => JSX.Element): any;
-}
-
-export default async function Page() {
-
-
-    // currently
-    // no description
-    // no code logos
-    // no toggling
-
-    const open = 1;
-
+export async function Serverr() {
     const data = await fetch('https://backend.ihawp.com/projects');
-    const posts: Projects = await data.json()
-    return <>
-        <ul>
-            {posts.map((post: Project) => (
-                <li key={post.index}
-                    className={"border-[#999] border-opacity-10 border-t-2 border-solid py-4 last:border-b-2"}>
-                    <summary className={`list-none cursor-pointer flex items-center`}>
-                        <div className={"w-full flex sm:p-4 py-4 items-center"}>
-                            <FontAwesomeIcon icon={open ? faMinus : faPlus}
-                                             className={"mr-3 opacity-40 text-[#999] hidden sm:inline"}/>
-                            <h2 className={'text-2xl font-medium h-full' + (open ? ' text-green-500' : '')}>{post.title}</h2>
-                        </div>
-                        <div className={"w-min flex gap-3 items-center ml-2"}>
-                            {post.github.length > 0 ?
-                                <Link href={post.github} title={post.github} target="_blank"
-                                      className={"bg-[#999] hover:bg-opacity-30 bg-opacity-20 rounded-full w-9 h-9 transition flex items-center justify-center"}>
-                                    <FontAwesomeIcon icon={faGithub} className={"text-xl"}/>
-                                </Link> : ''}
-                            {post.url.length > 0 ?
-                                <Link href={post.url} title={post.title} target="_blank"
-                                      className={"bg-[#999] hover:bg-opacity-30 bg-opacity-20 rounded-full w-9 h-9 transition flex items-center justify-center"}>
-                                    <FontAwesomeIcon icon={faLink}/>
-                                </Link> : ''}
-                        </div>
-                    </summary>
-                    <div className={`overflow-hidden transition-all duration-75 sm:px-4 ${open ? 'py-4' : 'max-h-0'}`}>
-
-                        <div className={"flex gap-8 text-4xl text-[#999] text-opacity-50 pt-1 justify-center"}>
-
-                        </div>
-                    </div>
-                </li>
-            ))}
-        </ul>
-    </>
+    const posts: Projectsi = await data.json();
+    return (
+        <Home posts={posts} />
+    )
 }
 
-/*
-                    <div className={`overflow-hidden transition-all duration-75 sm:px-4 ${open ? 'py-4' : 'max-h-0'}`}>
-                        {post.description.map((item: string, index: number) => (<div key={index}>
-                                <p className={"opacity-95 leading-7 pb-4"}>{item}</p>
-                            </div>
-                        ))}
-                        <div className={"flex gap-8 text-4xl text-[#999] text-opacity-50 pt-1 justify-center"}>
-                            {post.logos.map((item: IconName, index: number) => (<div key={index}>
-                                    <FontAwesomeIcon icon={['fab', item]}/>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-*/
+// @ts-ignore
+export function Home({posts}) {
+    return <>
+        <div className={"flex items-center justify-center flex-col py-8 sm:pt-8 sm:pb-12 gap-3 text-center"}>
+            <img alt="Warren Chemerika"
+                 className="rounded-full w-[250px] hover:bg-green-600 hover:p-5 transition-all mb-2 shadow-md shadow-[#222]"
+                 draggable={"false"} src={"./w.jpg"}/>
+            <h1 className={"sm:text-6xl text-[35px] mb-1 sm:mb-0"}><span className={"font-bold"}>Warren Chemerika</span>
+            </h1>
+            <h2 className={"sm:text-[39px] sm:leading-10 text-[23px] bg-[#999] bg-opacity-10 px-3 py-3 sm:pt-3 sm:pb-4 sm:w-max text-center rounded font-semibold"}>
+                Web Developer @ <a target={"_blank"} className="hover:underline" href={"https://www.servoweb.com/"}
+                                   title={"Servoweb Technologies"}>
+                Servoweb
+            </a>
+            </h2>
+            <p className={"sm:mt-1"}><FontAwesomeIcon icon={faCircleCheck}
+                                                      className={"w-[20px] text-green-600 sm:mr-0.5"}/> Certified
+                by <a href={"/Front-EndWebDevCertificateWarrenChemerika.pdf"} target={"_blank"}
+                      className={"underline"}
+                      title={"Certificate of Front-End Web Development from Saskatchewan Polytechnic"}>
+                    Saskatchewan Polytechnic</a></p>
+            <Link href={"/roadmap"} className={"opacity-35 text-sm max-w-80 sm:max-w-none"}>View
+                Roadmap (2024-2029)</Link>
+        </div>
+        <Projects map={posts} posts={posts} />
+    </>;
+}
+
+export default Serverr;
