@@ -7,7 +7,7 @@ function ProjectLoading() {
     return (
         <div className={"flex items-center justify-center"}>
             <div className="lds-ripple">
-                <div></div>
+                <div className={"bg-green-5"}></div>
                 <div></div>
             </div>
         </div>

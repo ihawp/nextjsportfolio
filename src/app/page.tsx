@@ -2,19 +2,19 @@ import "./globals.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleCheck} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { Projects, Projectsi } from './Projects';
+import { Projects, ProjectsInterface } from './Projects';
 
 
-export async function Serverr() {
+async function Server() {
     const data = await fetch('https://backend.ihawp.com/projects');
-    const posts: Projectsi = await data.json();
+    const posts = await data.json();
     return (
         <Home posts={posts} />
     )
 }
 
 // @ts-ignore
-export function Home({posts}) {
+function Home({posts}: ProjectsInterface) {
     return <>
         <div className={"flex items-center justify-center flex-col py-8 sm:pt-8 sm:pb-12 gap-3 text-center"}>
             <img alt="Warren Chemerika"
@@ -37,8 +37,8 @@ export function Home({posts}) {
             <Link href={"/roadmap"} className={"opacity-35 text-sm max-w-80 sm:max-w-none"}>View
                 Roadmap (2024-2029)</Link>
         </div>
-        <Projects map={posts} posts={posts} />
+        <Projects posts={posts} />
     </>;
 }
 
-export default Serverr;
+export default Server;
