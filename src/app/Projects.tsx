@@ -4,7 +4,7 @@ import {useState} from 'react';
 import Link from 'next/link';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faLink, faPlus, faMinus, IconDefinition} from "@fortawesome/free-solid-svg-icons";
+import { faLink, faPlus, faMinus, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import { faJsSquare, faHtml5, faReact, faNodeJs, faPhp, faCss, faWordpress } from "@fortawesome/free-brands-svg-icons";

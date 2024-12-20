@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Projects, ProjectsInterface } from './Projects';
 
 
-async function Server() {
+export default async function Server() {
     const data = await fetch('https://backend.ihawp.com/projects');
     const posts = await data.json();
     return (
@@ -13,7 +13,6 @@ async function Server() {
     )
 }
 
-// @ts-ignore
 function Home({posts}: ProjectsInterface) {
     return <>
         <div className={"flex items-center justify-center flex-col py-8 sm:pt-8 sm:pb-12 gap-3 text-center"}>
@@ -40,5 +39,3 @@ function Home({posts}: ProjectsInterface) {
         <Projects posts={posts} />
     </>;
 }
-
-export default Server;
