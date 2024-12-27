@@ -4,7 +4,6 @@ import {faCircleCheck} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Projects, ProjectsInterface } from './Projects';
 
-
 export default async function Server() {
     const data = await fetch('https://ihawp.com/projects');
     const posts = await data.json();
