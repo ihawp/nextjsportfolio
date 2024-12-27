@@ -4,8 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face { font-family: 'Spongeboy Me Bob'; /* from da font */ src: url('assets/Spongeboy Me Bob.ttf'); /* from da font */ }
-.spongeboymebob { font-family: 'Spongeboy Me Bob'; /* from da font */ }
+@font-face {
+    font-family: 'Spongeboy';
+    src: url('assets/Spongeboy Me Bob.woff2') format('woff2'),
+    url('assets/Spongeboy Me Bob.woff') format('woff'),
+    url('assets/Spongeboy Me Bob.ttf') format('truetype');
+    font-display: swap;
+}
+.spongeboymebob { font-family: 'Spongeboy', serif; /* from da font */ }
 
 /* scrollbar */
 ::-webkit-scrollbar {
