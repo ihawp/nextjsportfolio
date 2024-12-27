@@ -6,7 +6,7 @@ import { Projects, ProjectsInterface } from './Projects';
 
 
 export default async function Server() {
-    const data = await fetch('https://backend.ihawp.com/projects');
+    const data = await fetch('https://ihawp.com/projects');
     const posts = await data.json();
     return (
         <Home posts={posts} />
@@ -17,8 +17,8 @@ function Home({posts}: ProjectsInterface) {
     return <>
         <div className={"flex items-center justify-center flex-col py-8 sm:pt-8 sm:pb-12 gap-3 text-center"}>
             <img alt="Warren Chemerika"
-                 className="rounded-full w-[250px] hover:bg-green-600 hover:p-5 transition-all mb-2 shadow-md shadow-[#222]"
-                 draggable={"false"} src={"./w.jpg"}/>
+                 className="rounded-full hover:bg-green-600 hover:p-5 transition-all mb-2" width="225" height="225"
+                 draggable={"false"} src={"./w.webp"}/>
             <h1 className={"sm:text-6xl text-[35px] mb-1 sm:mb-0"}><span className={"font-bold"}>Warren Chemerika</span>
             </h1>
             <h2 className={"sm:text-[39px] sm:leading-10 text-[23px] bg-[#999] bg-opacity-10 px-3 py-3 sm:pt-3 sm:pb-4 sm:w-max text-center rounded font-semibold"}>
