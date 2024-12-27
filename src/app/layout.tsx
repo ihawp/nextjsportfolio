@@ -50,7 +50,7 @@ export default function RootLayout({
                       title={"GitHub: ihawp"}
                       className={"sm:flex-grow-0 flex-grow"}>GitHub</Link>
                 <Link href={"mailto:ihawp@ihawp.com"} title="Email: ihawp@ihawp.com"
-                      className={"sm:flex-grow-0 flex-grow bg-green-600 py-1 px-3 rounded"}>Contact</Link>
+                      className={"sm:flex-grow-0 flex-grow bg-green-700 py-1 px-3 rounded"}>Contact</Link>
               </nav>
             </header>
             {children}
